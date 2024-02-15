@@ -47,4 +47,13 @@ class Companycontroller extends Controller
         $entreprises=Entreprise::all();
         return view('company.index',compact('entreprises'));
     }
+
+    public function search(Request $request)
+{
+    $searchTerm = $request->input('searchTerm');
+
+    $entreprises = Entreprise::where('nom', 'LIKE', "%{$searchTerm}%")->get();
+
+    return response()->json($entreprises);
+}
 }

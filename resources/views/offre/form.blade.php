@@ -47,7 +47,3 @@
     </form>
 
 </x-app-layout>
-
-
-
-

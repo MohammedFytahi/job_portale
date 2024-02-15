@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Utilisateur extends Model
 {
@@ -20,4 +21,12 @@ class Utilisateur extends Model
         'a_propos',
         'cv',
     ];
+
+
+    public function showCV()
+{
+    $utilisateur = Utilisateur::where('user_id', Auth::id())->first();
+
+    return view('cv.cv', compact('utilisateur'));
+}
 }

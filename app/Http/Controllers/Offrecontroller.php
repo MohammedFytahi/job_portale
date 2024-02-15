@@ -61,6 +61,6 @@ public function postuler(Request $request, $offreId)
     $user->offres()->attach($offreId);
 
     // Respond with a success message
-    return response()->json(['message' => 'Postulation réussie']);
+    return response()->json(['message' => 'applyed with seccus']);
 }
 }

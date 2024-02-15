@@ -6,7 +6,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\UtilisateurController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\Companycontroller;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +37,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
   
   
-  Route::post('/company/store', [\App\Http\Controllers\Companycontroller::class, 'store'])->name('store.company');
-  Route::get('/company', [\App\Http\Controllers\Companycontroller::class, 'index'])->name('formcompany');
-  Route::get('/company/show', [\App\Http\Controllers\Companycontroller::class, 'show'])->name('show.company');
+  Route::post('/company/store', [Companycontroller::class, 'store'])->name('store.company');
+  Route::get('/company', [Companycontroller::class, 'index'])->name('formcompany');
+  Route::get('/company/show', [Companycontroller::class, 'show'])->name('show.company');
+  Route::get('/search', [Companycontroller::class, 'search'])->name('entreprise.search');
+
 
 
   Route::post('/offre/store', [\App\Http\Controllers\Offrecontroller::class,'store'])->name('store.offre');
@@ -74,6 +78,7 @@ Route::delete('/competence/{id}', [CompetenceController::class, 'destroy'])->nam
 
 Route::get('/generate-pdf', [PDFController::class, 'generatePDF'])->name('generate.pdf');
 Route::get('/cv', [PDFController::class, 'index'])->name('cv');
+
 
 });
 
